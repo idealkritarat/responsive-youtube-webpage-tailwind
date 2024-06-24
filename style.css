@@ -1,0 +1,17 @@
+* {
+    scroll-behavior: smooth;
+    scrollbar-color: #999 #0A0A0A;
+}
+
+#genre-scroll {
+    mask-image: linear-gradient(
+        to right,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,1) 90%,
+        rgba(0,0,0,0)
+    );
+}
+
+.scroll-hidden {
+    scrollbar-width: none;
+}

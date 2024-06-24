@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overflow-x-hidden w-screen">
+    <header class="flex items-center justify-between w-screen h-16 px-7 *:text-white bg-neutral-950 sticky top-0 overflow-hidden z-20">
+        <div class="flex items-center gap-3">
+            <span id="menu-btn" class="material-symbols-outlined cursor-pointer hover:bg-neutral-800 p-2 rounded-full">
+                menu
+            </span>
+            <div class="flex items-center cursor-pointer">
+                <span class="material-symbols-outlined text-red-600 text-4xl">
+                    smart_display
+                </span>
+                <span class="font-extrabold text-2xl scale-x-90">YouTube</span>
+            </div>
+        </div>
+        <div class="sm:flex hidden grow h-10 justify-center gap-3 px-11">
+            <div class="flex items-center h-full grow max-w-screen-sm">
+                <input type="text" class="ps-4 rounded-s-full h-full bg-neutral-900 border-neutral-800 border-2  w-full focus:border-blue-500 focus:outline-none" placeholder="Search">
+                <span class="h-full px-3 grid place-items-center material-symbols-outlined bg-neutral-800 border-neutral-800 border-2 rounded-e-full cursor-pointer">search</span>
+            </div>
+            <span class="material-symbols-outlined size-fit bg-neutral-800  h-10 w-10 grid place-items-center rounded-full cursor-pointer hover:bg-neutral-700">
+                mic
+            </span>
+        </div>
+        <div class="flex items-center *:text-2xl sm:gap-5 grow-0 *:cursor-pointer *:p-2 *:rounded-full *:w-12 *:h-12 *:grid *:place-items-center">
+            <span class="material-symbols-outlined sm:hidden hover:bg-neutral-800">search</span>
+            <span class="material-symbols-outlined sm:hidden hover:bg-neutral-800">mic</span>
+            <span class="material-symbols-outlined hover:bg-neutral-800">video_call</span>
+            <span class="material-symbols-outlined hover:bg-neutral-800">notifications</span>
+            <span class="material-symbols-outlined hover:bg-neutral-800">account_circle</span>
+        </div>
+    </header>
+    <div id="yt-main" class="w-screen grid grid-cols-2 relative">
+        <div id="float-menu-bg" class="fixed w-screen h-screen -z-10 bg-black left-0 top-0 opacity-0 transition-opacity duration-300"></div>
+        <aside id="max-aside" class="w-60 bg-neutral-950 flex items-center flex-col sticky h-screen overflow-y-scroll scroll-hidden transition-all duration-300 z-30">
+            <div id="menu-btn-float" class="hidden items-center gap-3">
+                <span id="menu-btn-float-btn" class="material-symbols-outlined cursor-pointer hover:bg-neutral-800 p-2 rounded-full text-white">
+                    menu
+                </span>
+                <div class="flex items-center cursor-pointer">
+                    <span class="material-symbols-outlined text-red-600 text-4xl">
+                        smart_display
+                    </span>
+                    <span class="font-extrabold text-2xl scale-x-90 text-white">YouTube</span>
+                </div>
+            </div>
+            <div class="flex p-4 flex-col border-b-2 w-11/12 border-neutral-700">
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Home</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Shorts</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">subscriptions</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Subscriptions</span>
+                </a>
+            </div>
+            <div class="flex p-4 flex-col border-b-2 w-11/12 border-neutral-700">
+                <span class="text-white text-lg flex items-center ml-2 my-3">You <span class="material-symbols-outlined text-2xl">chevron_right</span></span>
+                <a class="text-white text-start h-10 flex items-center px-3  gap-5 bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Your channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">History</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">History</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">playlist_play</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Playlists</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">smart_display</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Your videos</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">lightbulb</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Your courses</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Watch later</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">Subscriptions</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Liked videos</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">content_cut</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Your clips</span>
+                </a>
+            </div>
+            <div class="flex p-4 flex-col border-b-2 w-11/12 border-neutral-700">
+                <span class="text-white text-lg flex items-center ml-2 my-3">Subscriptions</span>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+                <a class="text-white text-start h-10 flex items-center px-3 gap-5 hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-sm text-ellipsis whitespace-nowrap overflow-hidden">Channel</span>
+                </a>
+            </div>
+        </aside>
+        <aside id="min-aside" class="bg-neutral-950 hidden items-center flex-col sticky left-0 top-16 h-screen overflow-y-scroll scroll-hidden">
+            <div class="flex flex-col p-0.5 border-b-2 w-11/12 border-neutral-700 *:flex-col *:py-4 *:px-1">
+                <a class="text-white flex items-center hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="text-sm scale-75 text-ellipsis whitespace-nowrap overflow-hidden">Home</span>
+                </a>
+                <a class="text-white flex items-center hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                    <span class="text-sm scale-75 text-ellipsis whitespace-nowrap overflow-hidden">Shorts</span>
+                </a>
+                <a class="text-white flex items-center hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">subscriptions</span>
+                    <span class="text-sm scale-75 text-ellipsis whitespace-nowrap overflow-hidden">Subscriptions</span>
+                </a>
+                <a class="text-white flex items-center hover:bg-neutral-800 w-full rounded-lg cursor-pointer">
+                    <span class="material-symbols-outlined">video_library</span>
+                    <span class="text-sm scale-75 text-ellipsis whitespace-nowrap overflow-hidden">You</span>
+                </a>
+            </div>
+        </aside>
+        <main class="min-h-screen bg-neutral-950 w-full overflow-hidden px-5">
+            <div id="genre-bar" class="fixed flex items-center justify-center w-100 z-10 bg-neutral-950 ">
+                <span id="genre-go-left" class="material-symbols-outlined text-white cursor-pointer hover:bg-neutral-700 p-1.5 rounded-full place-items-center size-fit fixed z-30 xl:left-60 top-20 -translate-y-2 sm:left-28 left-3 hidden">chevron_left</span>
+                <span id="genre-go-right" class="material-symbols-outlined text-white cursor-pointer hover:bg-neutral-700 p-1.5 rounded-full grid place-items-center size-fit fixed z-30 right-0 top-20 -translate-y-2 -translate-x-2" >chevron_right</span>
+                <div id="genre-scroll" class="scroll-smooth h-14 w-full flex items-center gap-2.5 overflow-hidden *:shrink-0">
+                    <a href="" class="text-sm h-8 bg-white text-black grid place-items-center px-3 rounded-lg  cursor-pointer">All</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Music</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Gaming</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">JavaScript</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">News</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Live</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Mixes</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Minecraft modding</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Valorant</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Data type</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Playlists</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">AI</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Thai kick boxing</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">J-pop</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Deep House</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Bodybuilding</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">New-Age Music</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Role-Playing Games</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Playlists</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">AI</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Thai kick boxing</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">J-pop</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Deep House</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Bodybuilding</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">New-Age Music</a>
+                    <a href="" class="text-sm h-8 bg-neutral-800 text-white grid place-items-center px-3 rounded-lg  cursor-pointer hover:bg-neutral-700">Role-Playing Games</a>
+                </div>
+            </div>
+            <div id="youtube-feed" class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 mt-16">
+                <div id="video" class="p-4 cursor-pointer group">
+                    <div class="w-full aspect-video bg-neutral-600 rounded-xl transition-all duration-300 group-hover:rounded-none relative">
+                        <div class="absolute right-3 top-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <span class="material-symbols-outlined h-10 w-10 bg-opacity-50 bg-black grid place-items-center text-white rounded-full">volume_off</span>
+                            <span class="material-symbols-outlined h-10 w-10 bg-opacity-50 bg-black grid place-items-center text-white rounded-full">closed_caption</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex">
+                        <span class="material-symbols-outlined text-white text-4xl">account_circle</span>
+                        <div class="flex flex-col p-2">
+                            <span class="text-white font-semibold mb-1">This is a title of a video on youtube.</span>
+                            <span class="text-neutral-400 text-sm">Channel</span>
+                            <span id="view" class="text-neutral-400 text-sm">97K views - 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
